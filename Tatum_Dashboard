@@ -1,0 +1,61 @@
+
+Testnet API: 513f1601-e24a-4bf0-ad76-df111defb0d3
+
+curl --request GET \
+  --url 'https://api-eu1.tatum.io/v3/bitcoin/wallet' \
+  --header 'accept: application/json' \
+  --header 'x-api-key: 513f1601-e24a-4bf0-ad76-df111defb0d3' # Use API key from step 1
+
+CREATE WALLET
+
+curl --request GET --url 'https://api-eu1.tatum.io/v3/bitcoin/wallet' --header 'x-api-key: 513f1601-e24a-4bf0-ad76-df111defb0d3'
+
+***Test Result**
+{"mnemonic":"farm regret clip paddle wage fantasy divert borrow honey breeze jealous emerge taxi just invest glad purity yard above melody choice lift glove stairs","xpub":"tpubDFgwgVZEdeVWvyfCz2gTTcsxfU5UMjXwWfMdqg2W5ELdm4xSaJQLkpttqji3RdkPkfzPtC65BgGzWaGdhYmzFWQrckWRX8p3iTHMG9NT83F"}
+
+
+Generating service accounts
+
+curl --location --request POST 'https://api-eu1.tatum.io/v3/ledger/account' \
+--header 'x-api-key: 513f1601-e24a-4bf0-ad76-df111defb0d3' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "currency": "CELO",
+    "accountingCurrency": "USD",
+    "customer": {
+      "externalId": "SERVICE_CUSTOMER_EXTERNAL_ID"
+    }
+}'
+
+
+Creating user accounts
+
+
+curl --location --request POST 'https://api-eu1.tatum.io/v3/ledger/account' \
+--header 'x-api-key: 513f1601-e24a-4bf0-ad76-df111defb0d3' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "currency": "CELO",
+    "xpub": "tpubDFgwgVZEdeVWvyfCz2gTTcsxfU5UMjXwWfMdqg2W5ELdm4xSaJQLkpttqji3RdkPkfzPtC65BgGzWaGdhYmzFWQrckWRX8p3iTHMG9NT83F",
+    "accountingCurrency": "USD",
+    "customer": {
+      "externalId": "SERVICE_CUSTOMER_EXTERNAL_ID"
+    }
+}'
+
+
+
+
+
+
+import { generateWallet, Currency } from "@tatumio/tatum";
+
+import { generateWallet, Currency } from '@tatumio/tatum';
+const btcWallet = await generateWallet(Currency.BTC, true);
+
+const {generateAddressFromXPub, Currency} = require("@tatumio/tatum");
+
+const btcAddress = generateAddressFromXPub(Currency.BTC, false, "tpubDFgwgVZEdeVWvyfCz2gTTcsxfU5UMjXwWfMdqg2W5ELdm4xSaJQLkpttqji3RdkPkfzPtC65BgGzWaGdhYmzFWQrckWRX8p3iTHMG9NT83F", 1);
+console.log(btcAddress);
+
+yarn add babel/plugin-syntax-flow babel/plugin-transform-react-js testing-library/dom
